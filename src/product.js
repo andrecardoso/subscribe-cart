@@ -10,10 +10,7 @@ class Product {
   }
 
   taxes() {
-    let taxPercent = 0
-    if (!this.isExempt) {
-      taxPercent = taxPercent + BASE_TAX_PERCENT
-    }
+    let taxPercent = this.isExempt ? 0 : BASE_TAX_PERCENT
 
     if (this.isImported) {
       taxPercent = taxPercent + IMPORT_TAX_PERCENT
