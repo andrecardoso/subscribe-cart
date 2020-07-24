@@ -1,18 +1,18 @@
 export default class Cart {
   constructor(data) {
-    this._products = data.products || []
+    this.products = data.products || []
   }
 
   get numberOfProducts() {
-    return this._products.length
+    return this.products.length
   }
 
   taxes() {
-    return this._products.reduce((total, p) => total + p.taxes(), 0)
+    return this.products.reduce((total, p) => total + p.taxes(), 0)
   }
 
   total() {
-    const totalPrice = this._products.reduce((total, p) => total + p.price, 0)
+    const totalPrice = this.products.reduce((total, p) => total + p.price, 0)
     return totalPrice + this.taxes()
   }
 }
