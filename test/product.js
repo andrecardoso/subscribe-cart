@@ -9,5 +9,15 @@ describe('Product', () => {
 
       assert.equal(0, chocolate.taxes())
     })
+
+    it('should return imported tax when product is exempt and imported', () => {
+      const importedChocolate = new Product({
+        price: 10.0,
+        isExempt: true,
+        isImported: true
+      })
+
+      assert.equal(0.5, importedChocolate.taxes())
+    })
   })
 })

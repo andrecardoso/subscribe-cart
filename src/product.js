@@ -6,9 +6,14 @@ export default class Product {
   }
 
   taxes() {
-    if (this.isExempt) {
+    if (this.isExempt && !this.isImported) {
       return 0
     }
+
+    if (this.isImported) {
+      return this.price * 0.05
+    }
+
     return this.price
   }
 }
