@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server",
-    "test": "mocha --require @babel/register"
+    "test": "mocha --require @babel/register --watch"
   },
   "author": "andrecardoso",
   "license": "ISC",
