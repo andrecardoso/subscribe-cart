@@ -3,6 +3,10 @@ export default class Cart {
     this._products = data.products || []
   }
 
+  get numberOfProducts() {
+    return this._products.length
+  }
+
   taxes() {
     return this._products.reduce((total, p) => total + p.taxes(), 0)
   }
