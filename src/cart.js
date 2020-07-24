@@ -4,6 +4,6 @@ export default class Cart {
   }
 
   taxes() {
-    return 0
+    return this._products.reduce((total, p) => total + p.taxes(), 0)
   }
 }
