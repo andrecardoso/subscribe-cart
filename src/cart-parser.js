@@ -1,5 +1,5 @@
-import Cart from './cart'
-import { createProduct } from './product-data'
+import Cart from './cart.js'
+import { createProduct } from './product-data.js'
 
 function createProducts(productsText) {
   const productLineRegex = /(?<quantity>\d+)\s+(?<name>[\w|\s]+)\s+at\s+(?<price>\d\d?\.?\d?\d?)/gms
@@ -29,4 +29,4 @@ function createCart(cartText) {
   return new Cart({ products })
 }
 
-export { createProducts, createCart }
+export { createCart }
