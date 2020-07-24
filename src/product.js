@@ -6,8 +6,8 @@ class Product {
   constructor(data) {
     this.name = data.name
     this.price = data.price
-    this.isExempt = data.isExempt
-    this.isImported = data.isImported
+    this.isExempt = !!data.isExempt
+    this.isImported = !!data.isImported
   }
 
   taxes() {

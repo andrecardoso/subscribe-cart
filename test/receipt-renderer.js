@@ -9,7 +9,7 @@ describe('ReceiptRenderer', () => {
 
     const cart = createCart(cartText)
 
-    const expectedReceipt = `1 music CD: 14.99\nSales Taxes: 1.50\nTotal: 16.49`
+    const expectedReceipt = `1 music CD: 16.49\nSales Taxes: 1.50\nTotal: 16.49`
 
     assert.equal(expectedReceipt, renderReceipt(cart))
   })
@@ -19,7 +19,26 @@ describe('ReceiptRenderer', () => {
 
     const cart = createCart(cartText)
 
-    const expectedReceipt = `2 music CD: 29.98\nSales Taxes: 3.00\nTotal: 32.98`
+    const expectedReceipt = `2 music CD: 32.98\nSales Taxes: 3.00\nTotal: 32.98`
+
+    assert.equal(expectedReceipt, renderReceipt(cart))
+  })
+
+  it('should render cart with multiple items of different products', () => {
+    const cartText = `
+    1 imported bottle of perfume at 27.99
+    1 bottle of perfume at 18.99
+    1 packet of headache pills at 9.75
+    3 imported boxes of chocolates at 11.25`
+
+    const cart = createCart(cartText)
+
+    const expectedReceipt = `1 imported bottle of perfume: 32.19
+1 bottle of perfume: 20.89
+1 packet of headache pills: 9.75
+3 imported boxes of chocolates: 35.55
+Sales Taxes: 7.90
+Total: 98.38`
 
     assert.equal(expectedReceipt, renderReceipt(cart))
   })

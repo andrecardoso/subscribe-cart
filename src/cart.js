@@ -20,9 +20,14 @@ export default class Cart {
     return this._products.reduce((result, p) => {
       const item = result[p.name]
       if (!item) {
-        return { [p.name]: { quantity: 1, price: p.price.toFixed(2) } }
+        result[p.name] = {
+          quantity: 1,
+          price: p.price + p.taxes()
+        }
+      } else {
+        item.quantity = item.quantity + 1
       }
-      item.quantity = item.quantity + 1
+
       return result
     }, {})
   }

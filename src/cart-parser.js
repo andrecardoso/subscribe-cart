@@ -1,5 +1,5 @@
 import Cart from './cart'
-import Product from './product'
+import { createProduct } from './product-data'
 
 function createProducts(productsText) {
   const productLineRegex = /(?<quantity>\d+)\s+(?<name>[\w|\s]+)\s+at\s+(?<price>\d\d?\.?\d?\d?)/gms
@@ -14,7 +14,7 @@ function createProducts(productsText) {
 
   const products = []
   for (let i = 0; i < quantity; i++) {
-    products.push(new Product({ name, price: parseFloat(price) }))
+    products.push(createProduct({ name, price }))
   }
 
   return products
@@ -29,4 +29,4 @@ function createCart(cartText) {
   return new Cart({ products })
 }
 
-export { createCart }
+export { createProducts, createCart }

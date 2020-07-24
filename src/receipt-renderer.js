@@ -1,11 +1,8 @@
 function renderItems(items) {
-  return Object.entries(items).reduce(
-    (result, [name, item]) =>
-      `${result ? '\n' : ''}${item.quantity} ${name}: ${
-        item.quantity * item.price
-      }`,
-    ''
-  )
+  return Object.entries(items).reduce((text, [name, item]) => {
+    const total = (item.quantity * item.price).toFixed(2)
+    return `${text ? `${text}\n` : ''}${item.quantity} ${name}: ${total}`
+  }, '')
 }
 
 function renderReceipt(cart) {
