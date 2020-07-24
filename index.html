@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cart</title>
+    <link href="style.css" rel="stylesheet" />
+    <script type="module">
+      import calculate from './index.js'
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('calculate-button')
+        button.addEventListener('click', () => {
+          const input = document.getElementById('cart-input').value
+          const receipt = calculate(input)
+          document.getElementById('cart-output').textContent = receipt
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <main>
+      <label for="cart-input">Cart Input</label>
+      <textarea id="cart-input"></textarea>
+
+      <button id="calculate-button">Calculate</button>
+
+      <label for="cart-output">Cart Receipt</label>
+      <textarea id="cart-output" disabled></textarea>
+    </main>
+  </body>
+</html>
