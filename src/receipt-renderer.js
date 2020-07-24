@@ -1,6 +1,18 @@
 function renderProducts(products) {
-  return products.reduce(
-    (result, p) => `${result ? '\n' : ''}1 ${p.name}: ${p.price.toFixed(2)}`,
+  const items = products.reduce((result, p) => {
+    const item = result[p.name]
+    if (!item) {
+      return { [p.name]: { quantity: 1, price: p.price.toFixed(2) } }
+    }
+    item.quantity = item.quantity + 1
+    return result
+  }, {})
+
+  return Object.entries(items).reduce(
+    (result, [name, item]) =>
+      `${result ? '\n' : ''}${item.quantity} ${name}: ${
+        item.quantity * item.price
+      }`,
     ''
   )
 }

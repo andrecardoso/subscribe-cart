@@ -13,4 +13,14 @@ describe('ReceiptRenderer', () => {
 
     assert.equal(expectedReceipt, renderReceipt(cart))
   })
+
+  it('should create cart with two items of a single product', () => {
+    const cartText = `2 music CD at 14.99`
+
+    const cart = createCart(cartText)
+
+    const expectedReceipt = `2 music CD: 29.98\nSales Taxes: 3.00\nTotal: 32.98`
+
+    assert.equal(expectedReceipt, renderReceipt(cart))
+  })
 })
