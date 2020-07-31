@@ -8,9 +8,7 @@ function createProducts(productsText) {
     return null
   }
 
-  const quantity = match.groups.quantity
-  const name = match.groups.name
-  const price = match.groups.price
+  const { quantity, name, price } = match.groups
 
   const products = []
   for (let i = 0; i < quantity; i++) {
@@ -21,7 +19,7 @@ function createProducts(productsText) {
 }
 
 function createCart(cartText) {
-  const productLineRegex = /(?<quantity>\d+)\s+(?<name>[\w|\s]+)\s+at\s+(?<price>\d\d?\.?\d?\d?)/gm
+  const productLineRegex = /(\d+)\s+([\w|\s]+)\s+at\s+(\d\d?\.?\d?\d?)/gm
   const match = cartText.match(productLineRegex)
 
   const products = match.map(line => createProducts(line)).flat()
